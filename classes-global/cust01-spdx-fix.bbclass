@@ -1,0 +1,1 @@
+INHERIT:remove = "create-spdx"

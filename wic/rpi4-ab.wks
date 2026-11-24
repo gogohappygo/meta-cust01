@@ -1,0 +1,10 @@
+# Raspberry Pi 4 boot partition (FAT32)
+part /boot --source bootimg-partition --fstype=vfat --label boot --active --align 4096 --size 64M
+
+# Optional: Dedicated U-Boot environment partition (16 MiB)
+# Only keep this line if uboot.env exists in tmp/deploy/images/raspberrypi4-64/ when do_image_wic runs
+# part --source rawcopy --sourceparams="file=uboot.env" --ondisk mmcblk0 --fstype=ext4 --label uboot-env --align 4096 --fixed-size 16M
+
+# A/B Root Filesystem slots
+part / --source rootfs --fstype=ext4 --label rootfsA --align 4096 --fixed-size 1G
+part / --source rootfs --fstype=ext4 --label rootfsB --align 4096 --fixed-size 1G
